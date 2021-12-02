@@ -6,7 +6,27 @@ import TaskList from './components/TaskList';
 export const URL = 'https://adas-task-list.herokuapp.com/tasks';
 
 const App = () => {
-  const [tasks, setTasks] = useState(TASKS);
+  const [tasks, setTasks] = useState([]);
+  const [status, setStatus] = useState('Loading...');
+
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((res) => {
+        const newTasks = res.data.map((task) => {
+          return {
+            id: task.id,
+            text: task.title,
+            done: task.is_complete,
+          };
+        });
+        setStatus('Loaded');
+        setTasks(newTasks);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const updateTask = (id) => {
     const newTasks = tasks.map((task) => {
@@ -33,11 +53,15 @@ const App = () => {
       </header>
       <main>
         <div>
-          <TaskList
-            tasks={tasks}
-            onDeleteCallback={deleteTask}
-            onToggleCompleteCallback={updateTask}
-          />
+          {status === 'Loading...' ? (
+            `${status}`
+          ) : (
+            <TaskList
+              tasks={tasks}
+              onToggleCompleteCallback={updateTask}
+              onDeleteCallback={deleteTask}
+            />
+          )}
         </div>
       </main>
     </div>
