@@ -15,6 +15,9 @@ const NewTaskForm = ({ onAddTaskCallback }) => {
   };
 
   const handleChange = (e) => {
+    console.log(e);
+    console.log(e.target.name);
+    console.log(e.target.value);
     setTaskData({ ...taskData, [e.target.name]: e.target.value });
   };
 
@@ -31,7 +34,12 @@ const NewTaskForm = ({ onAddTaskCallback }) => {
             onChange={handleChange}
           />
           <label htmlFor="done">Done</label>
-          <select value={taskData.done} onChange={handleChange}>
+          <select
+            value={taskData.done}
+            onChange={handleChange}
+            name="done"
+            id="done"
+          >
             <option></option>
             <option value="true">Yes</option>
             <option value="false">No</option>
