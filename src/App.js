@@ -31,14 +31,18 @@ const App = () => {
   const updateTask = (id) => {
     const newTasks = tasks.map((task) => {
       if (task.id === id) {
-        return {
-          ...task,
-          done: !task.done,
-        };
+        task.done = !task.done;
+        let routeWord = 'complete';
+        if (!task.done) {
+          routeWord = 'incomplete';
+        }
+        axios
+          .patch(`${URL}/${id}/${routeWord}`)
+          .then(() => setTasks(newTasks))
+          .catch((err) => console.log(err));
       }
       return task;
     });
-    setTasks(newTasks);
   };
 
   const deleteTask = (id) => {
