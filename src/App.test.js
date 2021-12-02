@@ -120,7 +120,7 @@ test('Clicking on a task again triggers a patch request and toggles task complet
   });
 });
 
-test('adding a new task calls the API and updates the task list', async () => {
+test.skip('adding a new task calls the API and updates the task list', async () => {
   // Arrange
   server.use(addTaskResponse);
 
@@ -143,7 +143,7 @@ test('adding a new task calls the API and updates the task list', async () => {
   expect(newTask).toBeVisible();
 });
 
-test('You can add a task with the task marked complete', async () => {
+test.skip('You can add a task with the task marked complete', async () => {
   // Arrange
   server.use(addTaskResponse, taskGetResponse);
 
