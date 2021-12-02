@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
 
@@ -16,6 +16,26 @@ const TASKS = [
 ];
 
 const App = () => {
+  const [tasks, setTasks] = useState(TASKS);
+
+  const updateTask = (id) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id === id) {
+        return {
+          ...task,
+          done: !task.done,
+        };
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
+
+  const deleteTask = (id) => {
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,7 +43,11 @@ const App = () => {
       </header>
       <main>
         <div>
-          <TaskList tasks={TASKS} />
+          <TaskList
+            tasks={tasks}
+            onDeleteCallback={deleteTask}
+            onToggleCompleteCallback={updateTask}
+          />
         </div>
       </main>
     </div>
