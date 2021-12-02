@@ -1,0 +1,16 @@
+.new-task__form {
+  display: flex;
+  justify-content: center;
+}
+
+.new-task__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 400px;
+  row-gap: 20px;
+}
+
+.new-task__fields label {
+  font-weight: bolder;
+  font-size: 1.2em;
+}
