@@ -10,7 +10,7 @@ describe('Task', () => {
         id={1}
         text={'Test Text'}
         done={true}
-        onClickCallback={() => {}}
+        onToggleCompleteCallback={() => {}}
         onDeleteCallback={() => {}}
       />
     );
@@ -53,7 +53,7 @@ describe('Task', () => {
         id={1}
         text={'Test Text'}
         done={true}
-        onClickCallback={() => {}}
+        onToggleCompleteCallback={() => {}}
         onDeleteCallback={() => {}}
       />
     );
@@ -70,7 +70,7 @@ describe('Task', () => {
         id={1}
         text={'Test Text'}
         done={false}
-        onClickCallback={() => {}}
+        onToggleCompleteCallback={() => {}}
         onDeleteCallback={() => {}}
       />
     );
