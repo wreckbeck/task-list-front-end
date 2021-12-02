@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import TaskList from './components/TaskList';
+import NewTaskForm from './components/NewTaskform';
 
 export const URL = 'https://adas-task-list.herokuapp.com/tasks';
 
@@ -73,6 +74,9 @@ const App = () => {
               onDeleteCallback={deleteTask}
             />
           )}
+        </div>
+        <div>
+          <NewTaskForm onAddTaskCallback={() => {} /* TODO */} />
         </div>
       </main>
     </div>
