@@ -3,18 +3,7 @@ import axios from 'axios';
 import './App.css';
 import TaskList from './components/TaskList';
 
-const TASKS = [
-  {
-    id: 1,
-    text: 'Mow the lawn',
-    done: false,
-  },
-  {
-    id: 2,
-    text: 'Cook Pasta',
-    done: true,
-  },
-];
+export const URL = 'https://adas-task-list.herokuapp.com/tasks';
 
 const App = () => {
   const [tasks, setTasks] = useState(TASKS);
