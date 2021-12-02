@@ -46,8 +46,15 @@ const App = () => {
   };
 
   const deleteTask = (id) => {
-    const newTasks = tasks.filter((task) => task.id !== id);
-    setTasks(newTasks);
+    axios
+      .delete(`${URL}/${id}`)
+      .then(() => {
+        const newTasks = tasks.filter((task) => task.id !== id);
+        setTasks(newTasks);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
