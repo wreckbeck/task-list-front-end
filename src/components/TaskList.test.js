@@ -21,8 +21,8 @@ describe('TaskList Renders', () => {
     render(
       <TaskList
         tasks={tasks}
-        onTaskClickCallback={() => {}}
-        onTaskDeleteCallback={() => {}}
+        onToggleCompleteCallback={() => {}}
+        onDeleteCallback={() => {}}
       />
     );
 
