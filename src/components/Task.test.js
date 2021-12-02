@@ -19,7 +19,7 @@ describe('Task', () => {
     expect(screen.getByText('Test Text')).toBeInTheDocument();
   });
 
-  test.skip('Runs callbacks when buttons clicked', () => {
+  test('Runs callbacks when buttons clicked', () => {
     // Arrange
     const clickCallback = jest.fn();
     const deleteCallback = jest.fn();
