@@ -30,7 +30,7 @@ describe('Task', () => {
         id={42}
         text={'Test Text'}
         done={true}
-        onClickCallback={clickCallback}
+        onToggleCompleteCallback={clickCallback}
         onDeleteCallback={deleteCallback}
       />
     );
