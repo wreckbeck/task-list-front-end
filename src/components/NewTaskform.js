@@ -42,8 +42,12 @@ const NewTaskForm = ({ onAddTaskCallback }) => {
             id="done"
           >
             <option></option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
+            <option value="true" data-testid="select-option">
+              Yes
+            </option>
+            <option value="false" data-testid="select-option">
+              No
+            </option>
           </select>
           <button className="button new-task__submit" type="submit">
             Add Task
