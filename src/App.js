@@ -58,6 +58,26 @@ const App = () => {
       });
   };
 
+  const addTask = ({ title, done }) => {
+    axios
+      .post(URL, {
+        title,
+        // eslint-disable-next-line camelcase
+        completed_at: done ? new Date() : null,
+        description: '',
+      })
+      .then((res) => {
+        console.log(res.data);
+        const newTask = {
+          id: res.data.task.id,
+          text: res.data.task.title,
+          done: res.data.task.is_complete,
+        };
+        setTasks([...tasks, newTask]);
+      })
+      .catch((err) => console.log(err.response.data));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -76,7 +96,7 @@ const App = () => {
           )}
         </div>
         <div>
-          <NewTaskForm onAddTaskCallback={() => {} /* TODO */} />
+          <NewTaskForm onAddTaskCallback={addTask} />
         </div>
       </main>
     </div>
