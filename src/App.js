@@ -67,7 +67,6 @@ const App = () => {
         description: '',
       })
       .then((res) => {
-        console.log(res.data);
         const newTask = {
           id: res.data.task.id,
           text: res.data.task.title,
