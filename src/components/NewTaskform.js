@@ -10,14 +10,15 @@ const NewTaskForm = ({ onAddTaskCallback }) => {
 
   const submitTaskData = (e) => {
     e.preventDefault();
-    onAddTaskCallback(taskData);
+
+    onAddTaskCallback({
+      ...taskData,
+      done: taskData.done === 'true',
+    });
     setTaskData({ title: '', done: false });
   };
 
   const handleChange = (e) => {
-    console.log(e);
-    console.log(e.target.name);
-    console.log(e.target.value);
     setTaskData({ ...taskData, [e.target.name]: e.target.value });
   };
 
@@ -44,6 +45,9 @@ const NewTaskForm = ({ onAddTaskCallback }) => {
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
+          <button className="button new-task__submit" type="submit">
+            Add Task
+          </button>
         </div>
       </section>
     </form>
