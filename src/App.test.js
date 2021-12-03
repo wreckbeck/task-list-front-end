@@ -120,7 +120,7 @@ test('Clicking on a task again triggers a patch request and toggles task complet
   });
 });
 
-test.skip('adding a new task calls the API and updates the task list', async () => {
+test('adding a new task calls the API and updates the task list', async () => {
   // Arrange
   server.use(addTaskResponse);
 
@@ -129,7 +129,7 @@ test.skip('adding a new task calls the API and updates the task list', async () 
   const newTaskTitle = 'new task title';
 
   // Act
-  fireEvent.change(screen.getByLabelText('Task Name'), {
+  fireEvent.change(screen.getByLabelText('Title'), {
     target: { value: newTaskTitle },
   });
 
@@ -143,7 +143,7 @@ test.skip('adding a new task calls the API and updates the task list', async () 
   expect(newTask).toBeVisible();
 });
 
-test.skip('You can add a task with the task marked complete', async () => {
+test('You can add a task with the task marked complete', async () => {
   // Arrange
   server.use(addTaskResponse, taskGetResponse);
 
@@ -155,7 +155,7 @@ test.skip('You can add a task with the task marked complete', async () => {
   const newTaskTitle = 'new task title';
 
   // Act
-  fireEvent.change(screen.getByLabelText('Task Name'), {
+  fireEvent.change(screen.getByLabelText('Title'), {
     target: { value: newTaskTitle },
   });
 
@@ -175,3 +175,6 @@ test.skip('You can add a task with the task marked complete', async () => {
   // Assert
   expect(newTask).toBeVisible();
 });
+
+// TODO other tests include:
+// 1.  When the API is down, the app should display a message
