@@ -3,20 +3,20 @@ import { render, screen } from '@testing-library/react';
 import Task from './Task';
 
 describe('Task', () => {
-  test('Renders text content', () => {
+  test('Renders title content', () => {
     // Act
     render(
       <Task
         id={1}
-        text={'Test Text'}
-        done={true}
+        title={'Test Title'}
+        isComplete={true}
         onToggleCompleteCallback={() => {}}
         onDeleteCallback={() => {}}
       />
     );
 
     // Assert
-    expect(screen.getByText('Test Text')).toBeInTheDocument();
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
   });
 
   test('Runs callbacks when buttons clicked', () => {
@@ -28,14 +28,14 @@ describe('Task', () => {
     render(
       <Task
         id={42}
-        text={'Test Text'}
-        done={true}
+        title={'Test Title'}
+        isComplete={true}
         onToggleCompleteCallback={clickCallback}
         onDeleteCallback={deleteCallback}
       />
     );
 
-    screen.getByText('Test Text').click();
+    screen.getByText('Test Title').click();
     screen.getByTestId('delete button 42').click();
 
     // Assert
@@ -46,37 +46,37 @@ describe('Task', () => {
     expect(deleteCallback).toHaveBeenCalledWith(42);
   });
 
-  test('Task has class "tasks__item__toggle--completed" if done is true', () => {
+  test('Task has class "tasks__item__toggle--completed" if isComplete is true', () => {
     // Act
     render(
       <Task
         id={1}
-        text={'Test Text'}
-        done={true}
+        title={'Test Title'}
+        isComplete={true}
         onToggleCompleteCallback={() => {}}
         onDeleteCallback={() => {}}
       />
     );
 
-    expect(screen.getByText('Test Text')).toHaveClass(
+    expect(screen.getByText('Test Title')).toHaveClass(
       'tasks__item__toggle--completed'
     );
   });
 
-  test('Task does not have class "tasks__item__toggle--completed" if done is false', () => {
+  test('Task does not have class "tasks__item__toggle--completed" if isComplete is false', () => {
     // Act
     render(
       <Task
         id={1}
-        text={'Test Text'}
-        done={false}
+        title={'Test Title'}
+        isComplete={false}
         onToggleCompleteCallback={() => {}}
         onDeleteCallback={() => {}}
       />
     );
 
     // Assert
-    expect(screen.getByText('Test Text')).not.toHaveClass(
+    expect(screen.getByText('Test Title')).not.toHaveClass(
       'tasks__item__toggle--completed'
     );
   });

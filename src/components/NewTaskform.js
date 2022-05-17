@@ -5,7 +5,7 @@ import './NewTaskForm.css';
 const NewTaskForm = ({ onAddTaskCallback }) => {
   const [taskData, setTaskData] = useState({
     title: '',
-    done: false,
+    isComplete: false,
   });
 
   const submitTaskData = (e) => {
@@ -13,9 +13,9 @@ const NewTaskForm = ({ onAddTaskCallback }) => {
 
     onAddTaskCallback({
       ...taskData,
-      done: taskData.done === 'true',
+      isComplete: taskData.isComplete === 'true',
     });
-    setTaskData({ title: '', done: false });
+    setTaskData({ title: '', isComplete: false });
   };
 
   const handleChange = (e) => {
@@ -34,12 +34,12 @@ const NewTaskForm = ({ onAddTaskCallback }) => {
             value={taskData.title}
             onChange={handleChange}
           />
-          <label htmlFor="done">Done</label>
+          <label htmlFor="isComplete">isComplete</label>
           <select
-            value={taskData.done}
+            value={taskData.isComplete}
             onChange={handleChange}
-            name="done"
-            id="done"
+            name="isComplete"
+            id="isComplete"
           >
             <option></option>
             <option value="true" data-testid="select-option">

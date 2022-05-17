@@ -7,12 +7,12 @@ import './Task.css';
 
 const Task = ({
   id,
-  text,
-  done,
+  title,
+  isComplete,
   onToggleCompleteCallback,
   onDeleteCallback,
 }) => {
-  const buttonClass = done ? 'tasks__item__toggle--completed' : '';
+  const buttonClass = isComplete ? 'tasks__item__toggle--completed' : '';
 
   return (
     <li className="tasks__item">
@@ -20,7 +20,7 @@ const Task = ({
         className={`tasks__item__toggle ${buttonClass}`}
         onClick={() => onToggleCompleteCallback(id)}
       >
-        {text}
+        {title}
       </button>
       <button
         className="tasks__item__remove button alert pull-right"
@@ -37,8 +37,8 @@ const Task = ({
 
 Task.propTypes = {
   id: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  done: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  isComplete: PropTypes.bool.isRequired,
   onToggleCompleteCallback: PropTypes.func.isRequired,
   onDeleteCallback: PropTypes.func.isRequired,
 };
