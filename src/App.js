@@ -4,7 +4,7 @@ import './App.css';
 import TaskList from './components/TaskList';
 import NewTaskForm from './components/NewTaskform';
 
-export const URL = 'http://task-list-api-c17.herokuapp.com/tasks';
+export const URL = 'https://task-list-api-c17.herokuapp.com/tasks';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
