@@ -2,15 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Task.css';
 
-const Task = ({ id, title, isComplete, onTaskClicked, onRemoveClicked }) => {
+const Task = ({
+  id,
+  title,
+  isComplete,
+  onToggleCompleteCallback,
+  onDeleteCallback,
+}) => {
   const buttonClass = isComplete ? 'tasks__item__toggle--completed' : '';
 
   const handleTaskClicked = () => {
-    onTaskClicked(id);
+    onToggleCompleteCallback(id);
   };
 
   const handleRemoveClicked = () => {
-    onRemoveClicked(id);
+    onDeleteCallback(id);
   };
 
   return (
@@ -32,8 +38,8 @@ Task.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   isComplete: PropTypes.bool.isRequired,
-  onTaskClicked: PropTypes.func.isRequired,
-  onRemoveClicked: PropTypes.func.isRequired,
+  onToggleCompleteCallback: PropTypes.func.isRequired,
+  onDeleteCallback: PropTypes.func.isRequired,
 };
 
 export default Task;

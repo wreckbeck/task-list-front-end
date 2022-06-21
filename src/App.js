@@ -6,7 +6,7 @@ import tasksJson from './data/tasks.json';
 const App = () => {
   const [tasks, setTasks] = useState(tasksJson);
 
-  const toggleCompleteTask = id => {
+  const updateTask = id => {
     // create a new list of task data in which the clicked task has its
     // completion toggled. This approach is _slightly_ unsafe in asynchronous
     // code, and we may prefer the functional style of setting tasks, which
@@ -39,7 +39,7 @@ const App = () => {
     // });
   };
 
-  const removeTask = id => {
+  const deleteTask = id => {
     // create a new list of task data in which the clicked task is removed
     // from the list. The function given to .filter should return true if that
     // entry in the list should be kept, and false if it should be excluded. We
@@ -72,8 +72,8 @@ const App = () => {
         <div>
           <TaskList
             tasks={tasks}
-            onTaskClicked={toggleCompleteTask}
-            onRemoveClicked={removeTask}
+            onToggleCompleteCallback={updateTask}
+            onDeleteCallback={deleteTask}
           />
         </div>
       </main>
